@@ -1,0 +1,18 @@
+import streamlit as st
+import google.generativeai as genai
+genai.configure(api_key="API_KEY-take it from Google AI Studio")
+
+model=genai.GenerativeModel("gemini-2.5-flash")
+
+st.title("Hello, AI!")
+
+prompt=st.text_input("Enter your prompt.")
+
+if st.button("Generate Response"):
+    if prompt:
+      response = model.generate_content(prompt)
+      st.write(response.text)
+    else:
+       st.warning("Please enter a prompt.")
+
+#https://30daysofai.streamlit.app/?day=2 --link
